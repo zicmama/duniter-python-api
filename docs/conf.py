@@ -41,11 +41,10 @@ extensions = [
 class Mock(MagicMock):
     @classmethod
     def __getattr__(cls, name):
-            return Mock()
+        return Mock()
 
-MOCK_MODULES = ['libnacl', 'libnacl.sign']
-sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
-
+sys.modules['libnacl'] = Mock()
+sys.modules['libnacl.sign'] = Mock()
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
