@@ -34,6 +34,7 @@ Contents:
    :maxdepth: 2
 
    documents
+   key
 
 
 Indices and tables
@@ -42,4 +43,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
