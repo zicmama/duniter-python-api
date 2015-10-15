@@ -7,7 +7,14 @@ from .document import Document
 
 class SelfCertification(Document):
     """
-    A document discribing a self certification.
+    A document describing a self certification.
+
+.. note:: This document is specified by the following format :
+
+    | UID:IDENTIFIER
+    | META:TS:TIMESTAMP
+    | SIGNATURE
+
     """
 
     re_inline = re.compile("([1-9A-Za-z][^OIl]{42,45}):([A-Za-z0-9+/]+(?:=|==)?):([0-9]+):([^\n]+)\n")
@@ -15,6 +22,16 @@ class SelfCertification(Document):
     re_timestamp = re.compile("META:TS:([0-9]+)\n")
 
     def __init__(self, version, currency, pubkey, ts, uid, signature):
+        """
+        Constructor of a SelfCertification
+
+        :param int version: ucoin protocol version
+        :param str currency: the self certification currency target
+        :param str pubkey: the pubkey which is self-certified
+        :param int ts: the timestamp of the self-certification
+        :param str uid: the uid which is self-certified
+        :param str signature: the signature of the self-certification
+        """
         if signature:
             super().__init__(version, currency, [signature])
         else:
@@ -25,6 +42,18 @@ class SelfCertification(Document):
 
     @classmethod
     def from_inline(cls, version, currency, inline):
+        """
+        Creates a SelfCertification from an inline format
+
+.. note :: An inline self certification is specified by the following format :
+PUBLIC_KEY:SIGNATURE:TIMESTAMP:USER_ID
+
+        :param int version: ucoin protocol version
+        :param str currency: the self certification currency target
+        :param str inline: the inline self-certification
+        :return: the inline SelfCertification
+        :rtype: SelfCertification
+        """
         selfcert_data = SelfCertification.re_inline.match(inline)
         pubkey = selfcert_data.group(1)
         signature = selfcert_data.group(2)
@@ -33,11 +62,21 @@ class SelfCertification(Document):
         return cls(version, currency, pubkey, ts, uid, signature)
 
     def raw(self):
+        """
+        Get the SelfCertification in a raw format,
+        :return: the self certification as a string document
+        :rtype: str
+        """
         return """UID:{0}
 META:TS:{1}
 """.format(self.uid, self.timestamp)
 
     def inline(self):
+        """
+        Get the SelfCertification in an inline format,
+        :return: the self certification as an inline string
+        :rtype: str
+        """
         return "{0}:{1}:{2}:{3}".format(self.pubkey, self.signatures[0],
                                     self.timestamp, self.uid)
 
@@ -45,6 +84,14 @@ META:TS:{1}
 class Certification(Document):
     """
     A document describing a certification.
+
+..note:: This document is defined by the following format :
+     | UID:IDENTIFIER
+     | META:TS:TIMESTAMP
+     | SIGNATURE
+     | META:TS:BLOCK_NUMBER-BLOCK_HASH
+     | CERTIFIER_SIGNATURE
+
     """
 
     re_inline = re.compile("([1-9A-Za-z][^OIl]{42,45}):([1-9A-Za-z][^OIl]{42,45}):([0-9]+):([A-Za-z0-9+/]+(?:=|==)?)\n")
@@ -54,6 +101,14 @@ class Certification(Document):
                  blocknumber, blockhash, signature):
         """
         Constructor
+
+        :param int version: ucoin protocol version
+        :param str currency: the self certification currency target
+        :param str pubkey_from: the pubkey which is certifying
+        :param str pubkey_to: the pubkey which is certified
+        :param int blocknumber: the block number of the certification
+        :param str blockhash: the block hash of the certification
+        :param str signature: the signature of the certification
         """
         super().__init__(version, currency, [signature])
         self.pubkey_from = pubkey_from
