@@ -1,4 +1,4 @@
-Key methods
+Key classes :
 =================
 
 .. automodule:: ucoinpy.key.signing_key

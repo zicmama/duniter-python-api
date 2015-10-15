@@ -1,5 +1,5 @@
-Documents classes
-=================
+Documents classes :
+===================
 
 Document
 --------
