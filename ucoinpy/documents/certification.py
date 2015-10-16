@@ -86,6 +86,7 @@ class Certification(Document):
     A document describing a certification.
 
 ..note:: This document is defined by the following format :
+
      | UID:IDENTIFIER
      | META:TS:TIMESTAMP
      | SIGNATURE
