@@ -28,7 +28,7 @@ Contributions are welcome.
 
 
 Contents:
-========
+=========
 
 .. toctree::
    :maxdepth: 2
