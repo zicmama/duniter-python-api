@@ -36,7 +36,7 @@ Peer document
    :special-members:
    :exclude-members: __dict__,__weakref__
 
-   .. automethod:: from_signed_raw
+   .. automethod::from_signed_raw
 
 Status document
 ---------------
