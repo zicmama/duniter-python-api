@@ -38,6 +38,8 @@ Peer document
 
 .. autofunction:: ucoinpy.documents.peer.from_signed_raw
 
+.. autofunction:: peer.from_signed_raw
+
 Status document
 ---------------
 .. automodule:: ucoinpy.documents.status
