@@ -37,6 +37,9 @@ class Peer(Document):
 
     @classmethod
     def from_signed_raw(cls, raw):
+        """
+          . 
+        """
         lines = raw.splitlines(True)
         n = 0
 

@@ -36,9 +36,6 @@ Peer document
    :special-members:
    :exclude-members: __dict__,__weakref__
 
-.. autoclass:: Peer(Document)
-   .. automethod:: from_signed_raw(cls, raw)
-
 Status document
 ---------------
 .. automodule:: ucoinpy.documents.status
