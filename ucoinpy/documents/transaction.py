@@ -61,6 +61,9 @@ class Transaction(Document):
 
     @classmethod
     def from_compact(cls, currency, compact):
+        """
+
+        """
         lines = compact.splitlines(True)
         n = 0
 
@@ -104,6 +107,9 @@ class Transaction(Document):
 
     @classmethod
     def from_signed_raw(cls, raw):
+        """
+
+        """
         lines = raw.splitlines(True)
         n = 0
 
@@ -155,6 +161,9 @@ class Transaction(Document):
                    comment, signatures)
 
     def raw(self):
+        """
+
+        """
         doc = """Version: {0}
 Type: Transaction
 Currency: {1}
@@ -236,6 +245,9 @@ class InputSource:
     re_compact = re.compile("([0-9]+):(D|T):([0-9a-fA-F]{5,40}):([0-9]+)\n")
 
     def __init__(self, index, source, number, txhash, amount):
+        """
+
+        """
         self.index = index
         self.source = source
         self.number = number
@@ -244,6 +256,9 @@ class InputSource:
 
     @classmethod
     def from_inline(cls, inline):
+        """
+
+        """
         data = InputSource.re_inline.match(inline)
         index = int(data.group(1))
         source = data.group(2)
@@ -254,6 +269,9 @@ class InputSource:
 
     @classmethod
     def from_bma(cls, bma_data):
+        """
+
+        """
         index = None
         source = bma_data['type']
         number = bma_data['number']
@@ -262,6 +280,9 @@ class InputSource:
         return cls(index, source, number, txhash, amount)
 
     def inline(self):
+        """
+
+        """
         return "{0}:{1}:{2}:{3}:{4}".format(self.index,
                                             self.source,
                                             self.number,
@@ -276,15 +297,24 @@ class OutputSource():
     re_inline = re.compile("([1-9A-Za-z][^OIl]{42,45}):([0-9]+)")
 
     def __init__(self, pubkey, amount):
+        """
+
+        """
         self.pubkey = pubkey
         self.amount = amount
 
     @classmethod
     def from_inline(cls, inline):
+        """
+
+        """
         data = OutputSource.re_inline.match(inline)
         pubkey = data.group(1)
         amount = int(data.group(2))
         return cls(pubkey, amount)
 
     def inline(self):
+        """
+
+        """
         return "{0}:{1}".format(self.pubkey, self.amount)

@@ -22,7 +22,13 @@ logger = logging.getLogger("ucoin/ud")
 
 
 class Ud(API):
+    """
+
+    """
     def __init__(self, conn_handler, module='ud'):
+        """
+
+        """
         super(Ud, self).__init__(conn_handler, module)
 
 
@@ -30,10 +36,16 @@ class History(Ud):
     """Get UD history."""
 
     def __init__(self, conn_handler, pubkey, module='ud'):
+        """
+
+        """
         super(Ud, self).__init__(conn_handler, module)
         self.pubkey = pubkey
 
     def __get__(self, **kwargs):
+        """
+
+        """
         assert self.pubkey is not None
         r = yield from self.requests_get('/history/%s' % self.pubkey, **kwargs)
         return (yield from r.json())

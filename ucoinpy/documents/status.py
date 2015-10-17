@@ -36,6 +36,9 @@ class Status(Document):
 
     @classmethod
     def from_signed_raw(cls, raw):
+        """
+
+        """
         lines = raw.splitlines(True)
         n = 0
 
@@ -67,6 +70,9 @@ class Status(Document):
                    sender, recipient, signature)
 
     def raw(self):
+        """
+
+        """
         return """Version: {0}
 Type: Status
 Currency: {1}

@@ -11,6 +11,9 @@ class Document:
     re_signature = re.compile("([A-Za-z0-9+/]+(?:=|==)?)\n")
 
     def __init__(self, version, currency, signatures):
+        """
+
+        """
         self.version = version
         self.currency = currency
         if signatures:
@@ -41,4 +44,7 @@ class Document:
 
     @property
     def sha_hash(self):
+        """
+
+        """
         return hashlib.sha1(self.signed_raw().encode("ascii")).hexdigest().upper()

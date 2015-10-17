@@ -22,7 +22,13 @@ logger = logging.getLogger("ucoin/wot")
 
 
 class WOT(API):
+    """
+
+    """
     def __init__(self, connection_handler, module='wot'):
+        """
+
+        """
         super(WOT, self).__init__(connection_handler, module)
 
 
@@ -30,6 +36,9 @@ class Add(WOT):
     """POST Public key data."""
 
     def __post__(self, **kwargs):
+        """
+
+        """
         assert 'pubkey' in kwargs
         assert 'self_' in kwargs
         assert 'other' in kwargs
@@ -42,6 +51,9 @@ class Revoke(WOT):
     """POST Public key data."""
 
     def __post__(self, **kwargs):
+        """
+
+        """
         assert 'pubkey' in kwargs
         assert 'self_' in kwargs
 
@@ -53,11 +65,17 @@ class Lookup(WOT):
     """GET Public key data."""
 
     def __init__(self, connection_handler, search, module='wot'):
+        """
+
+        """
         super(WOT, self).__init__(connection_handler, module)
 
         self.search = search
 
     def __get__(self, **kwargs):
+        """
+
+        """
         assert self.search is not None
 
         r = yield from self.requests_get('/lookup/%s' % self.search, **kwargs)
@@ -68,11 +86,17 @@ class CertifiersOf(WOT):
     """GET Certification data over a member."""
 
     def __init__(self, connection_handler, search, module='wot'):
+        """
+
+        """
         super(WOT, self).__init__(connection_handler, module)
 
         self.search = search
 
     def __get__(self, **kwargs):
+        """
+
+        """
         assert self.search is not None
 
         r = yield from self.requests_get('/certifiers-of/%s' % self.search, **kwargs)
@@ -83,11 +107,17 @@ class CertifiedBy(WOT):
     """GET Certification data from a member."""
 
     def __init__(self, connection_handler, search, module='wot'):
+        """
+
+        """
         super(WOT, self).__init__(connection_handler, module)
 
         self.search = search
 
     def __get__(self, **kwargs):
+        """
+
+        """
         assert self.search is not None
 
         r = yield from self.requests_get('/certified-by/%s' % self.search, **kwargs)
@@ -98,8 +128,14 @@ class Members(WOT):
     """GET List all current members of the Web of Trust."""
 
     def __init__(self, connection_handler, module='wot'):
+        """
+
+        """
         super(WOT, self).__init__(connection_handler, module)
 
     def __get__(self, **kwargs):
+        """
+
+        """
         r = yield from self.requests_get('/members', **kwargs)
         return (yield from r.json())

@@ -41,7 +41,7 @@ class Peer(Document):
     @classmethod
     def from_signed_raw(cls, raw):
         """
-  
+
         """
         lines = raw.splitlines(True)
         n = 0
@@ -100,6 +100,9 @@ class Endpoint():
 
     @staticmethod
     def from_inline(inline):
+        """
+
+        """
         for api in MANAGED_API:
             if (inline.startswith(api)):
                 if (api == "BASIC_MERKLED_API"):

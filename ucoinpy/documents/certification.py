@@ -119,6 +119,9 @@ class Certification(Document):
 
     @classmethod
     def from_inline(cls, version, currency, blockhash, inline):
+        """
+
+        """
         cert_data = Certification.re_inline.match(inline)
         pubkey_from = cert_data.group(1)
         pubkey_to = cert_data.group(2)
@@ -145,12 +148,18 @@ class Certification(Document):
             self.signatures.append(signing.decode("ascii"))
 
     def signed_raw(self, selfcert):
+        """
+
+        """
         raw = self.raw(selfcert)
         signed = "\n".join(self.signatures)
         signed_raw = raw + signed + "\n"
         return signed_raw
 
     def inline(self):
+        """
+
+        """
         return "{0}:{1}:{2}:{3}".format(self.pubkey_from, self.pubkey_to,
                                         self.blocknumber, self.signatures[0])
 
@@ -166,6 +175,9 @@ class Revocation(Document):
         super().__init__(version, currency, [signature])
 
     def raw(self, selfcert):
+        """
+
+        """
         return """{0}META:REVOKE
 """.format(selfcert.signed_raw())
 
@@ -178,4 +190,3 @@ class Revocation(Document):
         for key in keys:
             signing = base64.b64encode(key.signature(bytes(self.raw(selfcert), 'ascii')))
             self.signatures.append(signing.decode("ascii"))
-

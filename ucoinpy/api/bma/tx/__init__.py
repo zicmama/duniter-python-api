@@ -22,17 +22,29 @@ logger = logging.getLogger("ucoin/tx")
 
 
 class Tx(API):
+    """
+
+    """
     def __init__(self, connection_handler, module='tx'):
+        """
+
+        """
         super(Tx, self).__init__(connection_handler, module)
 
 
 class History(Tx):
     """Get transaction sources."""
     def __init__(self, conn_handler, pubkey, module='tx'):
+        """
+
+        """
         super(Tx, self).__init__(conn_handler, module)
         self.pubkey = pubkey
 
     def __get__(self, **kwargs):
+        """
+
+        """
         assert self.pubkey is not None
         r = yield from self.requests_get('/history/%s' % self.pubkey, **kwargs)
         return (yield from r.json())
@@ -42,6 +54,9 @@ class Process(Tx):
     """POST a transaction."""
 
     def __post__(self, **kwargs):
+        """
+
+        """
         assert 'transaction' in kwargs
 
         r = yield from self.requests_post('/process', **kwargs)
@@ -51,10 +66,16 @@ class Process(Tx):
 class Sources(Tx):
     """Get transaction sources."""
     def __init__(self, connection_handler, pubkey, module='tx'):
+        """
+
+        """
         super(Tx, self).__init__(connection_handler, module)
         self.pubkey = pubkey
 
     def __get__(self, **kwargs):
+        """
+
+        """
         assert self.pubkey is not None
         r = yield from self.requests_get('/sources/%s' % self.pubkey, **kwargs)
         return (yield from r.json())

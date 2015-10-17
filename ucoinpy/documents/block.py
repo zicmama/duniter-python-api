@@ -16,9 +16,15 @@ class BlockId:
 
     @classmethod
     def empty(cls):
+        """
+
+        """
         return cls(0, Block.Empty_Hash)
 
     def __init__(self, number, sha_hash):
+        """
+
+        """
         assert(type(number) is int)
         assert(BlockId.re_hash.match(sha_hash) is not None)
         self.number = number
@@ -35,6 +41,9 @@ class BlockId:
         return cls(number, sha_hash)
 
     def __str__(self):
+        """
+
+        """
         return "{0}-{1}".format(self.number, self.sha_hash)
 
 
@@ -159,10 +168,16 @@ The class Block handles Block documents.
 
     @property
     def blockid(self):
+        """
+
+        """
         return BlockId(self.number, self.sha_hash)
 
     @classmethod
     def from_signed_raw(cls, raw):
+        """
+
+        """
         lines = raw.splitlines(True)
         n = 0
 
@@ -292,6 +307,9 @@ The class Block handles Block documents.
                    transactions, signature)
 
     def raw(self):
+        """
+
+        """
         doc = """Version: {0}
 Type: Block
 Currency: {1}
