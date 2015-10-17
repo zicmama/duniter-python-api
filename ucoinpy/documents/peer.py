@@ -29,6 +29,9 @@ class Peer(Document):
 
     def __init__(self, version, currency, pubkey, blockid,
                  endpoints, signature):
+        """
+
+        """
         super().__init__(version, currency, [signature])
 
         self.pubkey = pubkey
@@ -38,7 +41,7 @@ class Peer(Document):
     @classmethod
     def from_signed_raw(cls, raw):
         """
-          . 
+  
         """
         lines = raw.splitlines(True)
         n = 0
@@ -72,6 +75,9 @@ class Peer(Document):
         return cls(version, currency, pubkey, blockid, endpoints, signature)
 
     def raw(self):
+        """
+
+        """
         doc = """Version: {0}
 Type: Peer
 Currency: {1}
@@ -89,7 +95,7 @@ Endpoints:
 
 class Endpoint():
     """
-    Describing endpoints
+    Describing EndPoints
     """
 
     @staticmethod
@@ -104,16 +110,25 @@ class Endpoint():
 class UnknownEndpoint(Endpoint):
 
     def __init__(self, api, properties):
+        """
+
+        """
         self.api = api
         self.properties = properties
 
     @classmethod
     def from_inline(cls, inline):
+        """
+
+        """
         api = inline.split()[0]
         properties = inline.split()[1:]
         return cls(api, properties)
 
     def inline(self):
+        """
+
+        """
         doc = self.api
         for p in self.properties:
             doc += " {0}".format(p)
@@ -125,6 +140,9 @@ class BMAEndpoint(Endpoint):
 
     @classmethod
     def from_inline(cls, inline):
+        """
+
+        """
         m = BMAEndpoint.re_inline.match(inline)
         server = m.group(1)
         ipv4 = m.group(2)
@@ -133,12 +151,18 @@ class BMAEndpoint(Endpoint):
         return cls(server, ipv4, ipv6, port)
 
     def __init__(self, server, ipv4, ipv6, port):
+        """
+
+        """
         self.server = server
         self.ipv4 = ipv4
         self.ipv6 = ipv6
         self.port = port
 
     def inline(self):
+        """
+
+        """
         return "BASIC_MERKLED_API{DNS}{IPv4}{IPv6}{PORT}" \
                     .format(DNS=(" {0}".format(self.server) if self.server else ""),
                             IPv4=(" {0}".format(self.ipv4) if self.ipv4 else ""),
@@ -146,6 +170,9 @@ class BMAEndpoint(Endpoint):
                             PORT=(" {0}".format(self.port) if self.port else ""))
 
     def conn_handler(self):
+        """
+
+        """
         if self.server:
             return ConnectionHandler(self.server, self.port)
         elif self.ipv4:

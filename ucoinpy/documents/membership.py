@@ -51,6 +51,9 @@ class Membership(Document):
 
     @classmethod
     def from_inline(cls, version, currency, membership_type, inline):
+        """
+  
+        """
         data = Membership.re_inline.match(inline)
         issuer = data.group(1)
         signature = data.group(2)
@@ -63,6 +66,9 @@ class Membership(Document):
 
     @classmethod
     def from_signed_raw(cls, raw, signature=None):
+        """
+
+        """
         lines = raw.splitlines(True)
         n = 0
 
@@ -99,6 +105,9 @@ class Membership(Document):
                    membership_type, uid, cert_ts, signature)
 
     def raw(self):
+        """
+
+        """
         return """Version: {0}
 Type: Membership
 Currency: {1}
@@ -116,6 +125,9 @@ CertTS: {7}
                       self.cert_ts)
 
     def inline(self):
+        """
+
+        """
         return "{0}:{1}:{2}:{3}:{4}:{5}".format(self.issuer,
                                         self.signatures[0],
                                         self.block_number,
