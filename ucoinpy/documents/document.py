@@ -6,13 +6,20 @@ import hashlib
 
 
 class Document:
+    """
+    The class Document handles documents.
+    """
     re_version = re.compile("Version: ([0-9]+)\n")
     re_currency = re.compile("Currency: ([^\n]+)\n")
     re_signature = re.compile("([A-Za-z0-9+/]+(?:=|==)?)\n")
 
     def __init__(self, version, currency, signatures):
         """
+        Constructor
 
+        :param int version: uCoin protocol version
+        :param str currency: the document currency
+        :param signatures:
         """
         self.version = version
         self.currency = currency
@@ -34,8 +41,8 @@ class Document:
 
     def signed_raw(self):
         """
-        If keys are None, returns the raw + current signatures
-        If keys are present, returns the raw signed by these keys
+        If keys are None, returns the raw + current signatures.
+        If keys are present, returns the raw signed by these keys.
         """
         raw = self.raw()
         signed = "\n".join(self.signatures)
@@ -45,6 +52,6 @@ class Document:
     @property
     def sha_hash(self):
         """
-
+        Return the property
         """
         return hashlib.sha1(self.signed_raw().encode("ascii")).hexdigest().upper()

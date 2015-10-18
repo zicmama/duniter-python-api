@@ -23,7 +23,10 @@ class BlockId:
 
     def __init__(self, number, sha_hash):
         """
+        Constructor
 
+        :param int number:
+        :param str sha_hash:
         """
         assert(type(number) is int)
         assert(BlockId.re_hash.match(sha_hash) is not None)
@@ -33,7 +36,11 @@ class BlockId:
     @classmethod
     def from_str(cls, blockid):
         """
-        :param str blockid: The block id
+        Creates a BlockId from a string.
+
+        :param str blockid: The block id.
+        :return: The BlockId.
+        :rtype: BlockId
         """
         data = blockid.split("-")
         number = int(data[0])
@@ -42,14 +49,16 @@ class BlockId:
 
     def __str__(self):
         """
-
+        Get the BlockId,
+        :return: The BlockId as a string.
+        :rtype: str
         """
         return "{0}-{1}".format(self.number, self.sha_hash)
 
 
 class Block(Document):
     """
-The class Block handles Block documents.
+    A document describing a Block.
 
 .. note:: A block document is specified by the following format :
 
@@ -169,14 +178,19 @@ The class Block handles Block documents.
     @property
     def blockid(self):
         """
+        Get the BlockId of the Block document,
 
+        :return: The BlockId.
+        :rtype: BlockId
         """
         return BlockId(self.number, self.sha_hash)
 
     @classmethod
     def from_signed_raw(cls, raw):
         """
-
+        :param str raw:
+        :return:
+        :rtype:
         """
         lines = raw.splitlines(True)
         n = 0
@@ -308,17 +322,20 @@ The class Block handles Block documents.
 
     def raw(self):
         """
+        Get the Block in a raw format,
 
+        :return: The Block as a string document.
+        :rtype: str
         """
         doc = """Version: {0}
-Type: Block
-Currency: {1}
-Nonce: {2}
-Number: {3}
-PoWMin: {4}
-Time: {5}
-MedianTime: {6}
-""".format(self.version,
+                Type: Block
+                Currency: {1}
+                Nonce: {2}
+                Number: {3}
+                PoWMin: {4}
+                Time: {5}
+                MedianTime: {6}
+                """.format(self.version,
                       self.currency,
                       self.noonce,
                       self.number,
@@ -335,7 +352,7 @@ MedianTime: {6}
             doc += "Parameters: {0}\n".format(str_params)
         else:
             doc += "PreviousHash: {0}\n\
-PreviousIssuer: {1}\n".format(self.prev_hash, self.prev_issuer)
+                    PreviousIssuer: {1}\n".format(self.prev_hash, self.prev_issuer)
 
         doc += "MembersCount: {0}\n".format(self.members_count)
 

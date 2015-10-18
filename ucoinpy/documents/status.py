@@ -4,7 +4,9 @@ from .document import Document
 
 class Status(Document):
     """
-.. note:: A status document is specified by the following format :
+    A document describing a Status.
+
+.. note:: A Status document is specified by the following format :
 
     | Version: VERSION
     | Type: Status
@@ -13,7 +15,6 @@ class Status(Document):
     | Block: BLOCK
     | From: SENDER
     | To: RECIPIENT
-
     """
 
     re_type = re.compile("Type: (Status)")
@@ -26,6 +27,14 @@ class Status(Document):
                  recipient, signature):
         """
         Constructor
+
+        :param int version: The uCoin protocol version.
+        :param str currency: The Status currency target.
+        :param  status:
+        :param  blockid:
+        :param  sender:
+        :param  recipient:
+        :param str signature: The signature of the Status document.
         """
         super().__init__(version, currency, [signature])
 
@@ -38,6 +47,9 @@ class Status(Document):
     def from_signed_raw(cls, raw):
         """
 
+        :param str raw:
+        :return:
+        :rtype:
         """
         lines = raw.splitlines(True)
         n = 0
@@ -71,14 +83,16 @@ class Status(Document):
 
     def raw(self):
         """
-
+        Get the Status in a raw format,
+        :return: The Status as a string document.
+        :rtype: str
         """
         return """Version: {0}
-Type: Status
-Currency: {1}
-Status: {2}
-Block: {3}
-From: {4}
-To: {5}
-""".format(self.version, self.currency, self.status,
+                Type: Status
+                Currency: {1}
+                Status: {2}
+                Block: {3}
+                From: {4}
+                To: {5}
+                """.format(self.version, self.currency, self.status,
            self.blockid, self.sender, self.recipient)

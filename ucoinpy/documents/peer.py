@@ -7,6 +7,8 @@ from .. import PROTOCOL_VERSION, MANAGED_API
 
 class Peer(Document):
     """
+    Describing a Peer document.
+
 .. note:: A peer document is specified by the following format :
 
     | Version: VERSION
@@ -19,7 +21,6 @@ class Peer(Document):
     | END_POINT_2
     | END_POINT_3
     | [...]
-
     """
 
     re_type = re.compile("Type: (Peer)")
@@ -30,7 +31,14 @@ class Peer(Document):
     def __init__(self, version, currency, pubkey, blockid,
                  endpoints, signature):
         """
+        Constructor
 
+        :param int version: The uCoin protocol version.
+        :param str currency: The currency of the Peer document.
+        :param str pubkey: The public key of the node.
+        :param str blockid: Block number and hash. Value is used to target a blockchain and precise time reference.
+        :param str endpoints: A Mulilines field containing a list of endpoints to interact with the node.
+        :param str signature: The signature of the Peer document.
         """
         super().__init__(version, currency, [signature])
 
@@ -42,6 +50,9 @@ class Peer(Document):
     def from_signed_raw(cls, raw):
         """
 
+        :param str raw:
+        :return:
+        :rtype:
         """
         lines = raw.splitlines(True)
         n = 0
@@ -76,15 +87,18 @@ class Peer(Document):
 
     def raw(self):
         """
+        Get the Peer document in a raw format,
 
+        :return: The Peer document as a string document.
+        :rtype: str
         """
         doc = """Version: {0}
-Type: Peer
-Currency: {1}
-PublicKey: {2}
-Block: {3}
-Endpoints:
-""".format(self.version, self.currency, self.pubkey, self.blockid)
+                Type: Peer
+                Currency: {1}
+                PublicKey: {2}
+                Block: {3}
+                Endpoints:
+                """.format(self.version, self.currency, self.pubkey, self.blockid)
 
         for endpoint in self.endpoints:
             doc += "{0}\n".format(endpoint.inline())
@@ -96,12 +110,20 @@ Endpoints:
 class Endpoint():
     """
     Describing EndPoints
+
+.. note:: This document can be specified by this following format :
+
+    | NAME_OF_THE_API [DNS] [IPv4] [IPv6] [PORT]
     """
 
     @staticmethod
     def from_inline(inline):
         """
+        Creates a Endpoint from an inline format.
 
+        :param str inline: The inline Endpoint.
+        :return: The inline Endpoint.
+        :rtype: Endpoint
         """
         for api in MANAGED_API:
             if (inline.startswith(api)):
@@ -111,10 +133,16 @@ class Endpoint():
 
 
 class UnknownEndpoint(Endpoint):
+    """
+    Describing an UnknownEndpoint
+    """
 
     def __init__(self, api, properties):
         """
+        Constructor
 
+        :param api: The API
+        :param properties:
         """
         self.api = api
         self.properties = properties
@@ -122,7 +150,11 @@ class UnknownEndpoint(Endpoint):
     @classmethod
     def from_inline(cls, inline):
         """
+        Creates an UnknownEndpoint from an inline format.
 
+        :param str inline: The inline UnknownEndpoint.
+        :return: The inline UnknownEndpoint.
+        :rtype: UnknownEndpoint
         """
         api = inline.split()[0]
         properties = inline.split()[1:]
@@ -130,7 +162,10 @@ class UnknownEndpoint(Endpoint):
 
     def inline(self):
         """
+        Get the UnknownEndpoint in an inline format,
 
+        :return: The UnknownEndpoint as an inline string.
+        :rtype: str
         """
         doc = self.api
         for p in self.properties:
@@ -139,12 +174,24 @@ class UnknownEndpoint(Endpoint):
 
 
 class BMAEndpoint(Endpoint):
+    """
+    Describing a BMAEndpoint
+
+.. note:: This document is specified by the following format :
+
+    | BASIC_MERKLED_API [DNS] [IPv4] [IPv6] [PORT]
+    """
+
     re_inline = re.compile('^BASIC_MERKLED_API(?: ([a-z0-9-_.]*(?:.[a-zA-Z])))?(?: ((?:[0-9.]{1,4}){4}))?(?: ((?:[0-9a-f:]{4,5}){4,8}))?(?: ([0-9]+))$')
 
     @classmethod
     def from_inline(cls, inline):
         """
+        Get a BMAEndpoint from an inline format.
 
+        :param str inline: The inline BMAEndpoint.
+        :return: The inline BMAEndpoint.
+        :rtype: BMAEndpoint
         """
         m = BMAEndpoint.re_inline.match(inline)
         server = m.group(1)
@@ -155,7 +202,12 @@ class BMAEndpoint(Endpoint):
 
     def __init__(self, server, ipv4, ipv6, port):
         """
+        Constructor
 
+        :param str server: The URL of the node.
+        :param str ipv4: The IPV4 address of the node.
+        :param str ipv6: The IPV4 address of the node.
+        :param int port: The port of the node.
         """
         self.server = server
         self.ipv4 = ipv4
@@ -164,7 +216,10 @@ class BMAEndpoint(Endpoint):
 
     def inline(self):
         """
+        Get the BMAEndpoint in an inline format,
 
+        :return: The BMAEndpoint as an inline string.
+        :rtype: str
         """
         return "BASIC_MERKLED_API{DNS}{IPv4}{IPv6}{PORT}" \
                     .format(DNS=(" {0}".format(self.server) if self.server else ""),
@@ -174,7 +229,7 @@ class BMAEndpoint(Endpoint):
 
     def conn_handler(self):
         """
-
+        Handles the connection's informations.
         """
         if self.server:
             return ConnectionHandler(self.server, self.port)

@@ -11,6 +11,8 @@ import re
 
 class Membership(Document):
     """
+    A document describing a Membership.
+
 .. note:: A membership document is specified by the following format :
 
     | Version: VERSION
@@ -40,6 +42,16 @@ class Membership(Document):
                  membership_type, uid, cert_ts, signature):
         """
         Constructor
+
+        :param int version: The uCoin protocol version.
+        :param str currency: The Membership currency target.
+        :param  issuer: The public key of the issuer.
+        :param  block_number:
+        :param  block_hash:
+        :param  membership_type: Membership message. Value is either IN or OUT to express wether a member wishes to opt-in or opt-out the community.
+        :param  uid: Identity to use for this public key.
+        :param  cert_ts: Identity's certification date.
+        :param str signature: The signature of the Membership document.
         """
         super().__init__(version, currency, [signature])
         self.issuer = issuer
@@ -52,7 +64,14 @@ class Membership(Document):
     @classmethod
     def from_inline(cls, version, currency, membership_type, inline):
         """
-  
+        Creates a Membership from an inline format.
+
+        :param int version: uCoin protocol version.
+        :param str currency: The Membership currency target.
+        :param membership_type:  Membership message. Value is either IN or OUT to express wether a member wishes to opt-in or opt-out the community.
+        :param str inline: The inline Membership.
+        :return: The inline Membership.
+        :rtype: Membership
         """
         data = Membership.re_inline.match(inline)
         issuer = data.group(1)
@@ -68,6 +87,9 @@ class Membership(Document):
     def from_signed_raw(cls, raw, signature=None):
         """
 
+        :param str raw:
+        :return:
+        :rtype:
         """
         lines = raw.splitlines(True)
         n = 0
@@ -106,17 +128,19 @@ class Membership(Document):
 
     def raw(self):
         """
-
+        Get the Membership in a raw format,
+        :return: The Membership as a string document.
+        :rtype: str
         """
         return """Version: {0}
-Type: Membership
-Currency: {1}
-Issuer: {2}
-Block: {3}-{4}
-Membership: {5}
-UserID: {6}
-CertTS: {7}
-""".format(self.version,
+                    Type: Membership
+                    Currency: {1}
+                    Issuer: {2}
+                    Block: {3}-{4}
+                    Membership: {5}
+                    UserID: {6}
+                    CertTS: {7}
+                    """.format(self.version,
                       self.currency,
                       self.issuer,
                       self.block_number, self.block_hash,
@@ -126,7 +150,9 @@ CertTS: {7}
 
     def inline(self):
         """
-
+        Get the Membership in an inline format,
+        :return: The Membership as an inline string.
+        :rtype: str
         """
         return "{0}:{1}:{2}:{3}:{4}:{5}".format(self.issuer,
                                         self.signatures[0],
