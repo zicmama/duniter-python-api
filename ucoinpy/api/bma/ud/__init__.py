@@ -23,28 +23,37 @@ logger = logging.getLogger("ucoin/ud")
 
 class Ud(API):
     """
-
+    Class relative to the Universal Dividend.
     """
     def __init__(self, conn_handler, module='ud'):
         """
+        Constructor
 
+        :param conn_handler: The connection handler.
+        :param module: (Default = ud)
         """
         super(Ud, self).__init__(conn_handler, module)
 
 
 class History(Ud):
-    """Get UD history."""
+    """Get the Universal Dividend history."""
 
     def __init__(self, conn_handler, pubkey, module='ud'):
         """
+        Constructor
 
+        :param conn_handler: The connection handler.
+        :param str pubkey: The public key.
+        :param module: (Default = ud)
         """
         super(Ud, self).__init__(conn_handler, module)
         self.pubkey = pubkey
 
     def __get__(self, **kwargs):
         """
+        Get the Universal Dividend history.
 
+        :param kwargs:
         """
         assert self.pubkey is not None
         r = yield from self.requests_get('/history/%s' % self.pubkey, **kwargs)

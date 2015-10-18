@@ -23,11 +23,18 @@ logger = logging.getLogger("ucoin/tx")
 
 class Blocks(History):
     """
-
+    Get the wallet transaction history : /tx/history/[PUBKEY]/blocks/[from]/[to]
     """
+
     def __init__(self, conn_handler, pubkey, from_, to_, module='tx'):
         """
+        Constructor
 
+        :param conn_handler:
+        :param str pubkey: The wallet public key.
+        :param from_: The starting block or the starting timestamp limit (optionnal).
+        :param to_: The ending block or the ending timestamp (optionnal).
+        :param str module: (Default value = tx)
         """
         super(Blocks, self).__init__(conn_handler, pubkey, module)
         self.from_ = from_
@@ -35,7 +42,9 @@ class Blocks(History):
 
     def __get__(self, **kwargs):
         """
+        Get the wallet transaction history : /tx/history/[PUBKEY]/blocks/[from]/[to]
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/history/%s/blocks/%s/%s' % (self.pubkey, self.from_, self.to_), **kwargs)
         return (yield from r.json())

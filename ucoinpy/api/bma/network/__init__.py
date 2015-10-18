@@ -23,11 +23,14 @@ logger = logging.getLogger("ucoin/network")
 
 class Network(API):
     """
-
+    /network/* , this URL is used for the "UCoin Gossip" protocol (exchanging UC.G. messages).
     """
     def __init__(self, connection_handler, module='network'):
         """
+        Constructor
 
+        :param connection_handler: The connection handler.
+        :param str module: (Default value = network)
         """
         super(Network, self).__init__(connection_handler, module)
 
@@ -37,7 +40,9 @@ class Peering(Network):
 
     def __get__(self, **kwargs):
         """
+        GET peering information about a peer : /network/peering
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/peering', **kwargs)
         return (yield from r.json())

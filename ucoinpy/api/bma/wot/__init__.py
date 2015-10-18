@@ -22,12 +22,14 @@ logger = logging.getLogger("ucoin/wot")
 
 
 class WOT(API):
-    """
+    """ Class relative to the Web of Trust. """
 
-    """
     def __init__(self, connection_handler, module='wot'):
         """
+        Constructor
 
+        :param connection_handler: The connection handler.
+        :param str module: (Default value = wot)
         """
         super(WOT, self).__init__(connection_handler, module)
 
@@ -37,7 +39,9 @@ class Add(WOT):
 
     def __post__(self, **kwargs):
         """
+        POST Public key data.
 
+        :param kwargs:
         """
         assert 'pubkey' in kwargs
         assert 'self_' in kwargs
@@ -52,7 +56,9 @@ class Revoke(WOT):
 
     def __post__(self, **kwargs):
         """
+        POST Public key data.
 
+        :param kwargs:
         """
         assert 'pubkey' in kwargs
         assert 'self_' in kwargs
@@ -66,7 +72,11 @@ class Lookup(WOT):
 
     def __init__(self, connection_handler, search, module='wot'):
         """
+        Constructor
 
+        :param connection_handler: The connection handler.
+        :param search:
+        :param str module: (Default value = wot)
         """
         super(WOT, self).__init__(connection_handler, module)
 
@@ -74,7 +84,9 @@ class Lookup(WOT):
 
     def __get__(self, **kwargs):
         """
+        GET Public key data.
 
+        :param kwargs:
         """
         assert self.search is not None
 
@@ -87,7 +99,11 @@ class CertifiersOf(WOT):
 
     def __init__(self, connection_handler, search, module='wot'):
         """
+        Constructor
 
+        :param connection_handler: The connection handler.
+        :param search:
+        :param str module: (Default value = wot)
         """
         super(WOT, self).__init__(connection_handler, module)
 
@@ -95,7 +111,9 @@ class CertifiersOf(WOT):
 
     def __get__(self, **kwargs):
         """
+        GET Certification data over a member.
 
+        :param kwargs:
         """
         assert self.search is not None
 
@@ -108,7 +126,11 @@ class CertifiedBy(WOT):
 
     def __init__(self, connection_handler, search, module='wot'):
         """
+        Constructor
 
+        :param connection_handler: The connection handler.
+        :param search:
+        :param str module: (Default value = wot)
         """
         super(WOT, self).__init__(connection_handler, module)
 
@@ -116,7 +138,9 @@ class CertifiedBy(WOT):
 
     def __get__(self, **kwargs):
         """
+        GET Certification data from a member.
 
+        :param kwargs:
         """
         assert self.search is not None
 
@@ -125,17 +149,22 @@ class CertifiedBy(WOT):
 
 
 class Members(WOT):
-    """GET List all current members of the Web of Trust."""
+    """GET the List of all current members of the Web of Trust."""
 
     def __init__(self, connection_handler, module='wot'):
         """
+        Constructor
 
+        :param connection_handler: The connection handler.
+        :param str module: (Default value = wot)
         """
         super(WOT, self).__init__(connection_handler, module)
 
     def __get__(self, **kwargs):
         """
+        GET the List of all current members of the Web of Trust.
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/members', **kwargs)
         return (yield from r.json())

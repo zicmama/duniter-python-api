@@ -27,13 +27,14 @@ logger = logging.getLogger("ucoin")
 
 
 class ConnectionHandler(object):
-    """Helper class used by other API classes to ease passing server connection information."""
+    """Helper class used by other API classes to ease passing node connection information."""
 
     def __init__(self, server, port):
         """
-        Arguments:
-        - `server`: server hostname
-        - `port`: port number
+        Constructor
+
+        :param str server: The node hostname.
+        :param int port: The port number.
         """
 
         self.server = server
@@ -41,9 +42,9 @@ class ConnectionHandler(object):
 
     def __str__(self):
         """
-
+        Get connection information.
         """
-        return 'connection info: %s:%d' % (self.server, self.port)
+        return 'Connection info: %s:%d' % (self.server, self.port)
 
 
 class API(object):
@@ -51,11 +52,10 @@ class API(object):
 
     def __init__(self, connection_handler, module):
         """
-        Asks a module in order to create the url used then by derivated classes.
+        Constructor - Asks a module in order to create the URL used then by derivated classes.
 
-        Arguments:
-        - `module`: module name
-        - `connection_handler`: connection handler
+        :param connection_handler: The connection handler.
+        :param str module: The module name.
         """
 
         self.module = module
@@ -64,10 +64,9 @@ class API(object):
 
     def reverse_url(self, path):
         """
-        Reverses the url using self.url and path given in parameter.
+        Reverses the URL using self.url and a given path in parameter.
 
-        Arguments:
-        - `path`: the request path
+        :param path: The request path.
         """
 
         server, port = self.connection_handler.server, self.connection_handler.port
@@ -76,12 +75,12 @@ class API(object):
         return url + path
 
     def get(self, **kwargs):
-        """wrapper of overloaded __get__ method."""
+        """A wrapper of overloaded __get__ method."""
 
         return self.__get__(**kwargs)
 
     def post(self, **kwargs):
-        """wrapper of overloaded __post__ method."""
+        """A wrapper of overloaded __post__ method."""
 
         logger.debug('do some work with')
 
@@ -92,11 +91,11 @@ class API(object):
         return data
 
     def __get__(self, **kwargs):
-        """interface purpose for GET request"""
+        """An interface purpose for GET request."""
         pass
 
     def __post__(self, **kwargs):
-        """interface purpose for POST request"""
+        """An interface purpose for POST request."""
         pass
 
     @asyncio.coroutine
@@ -104,8 +103,7 @@ class API(object):
         """
         Requests GET wrapper in order to use API parameters.
 
-        Arguments:
-        - `path`: the request path
+        :param path: The request path.
         """
         logging.debug("Request : {0}".format(self.reverse_url(path)))
         response = yield from asyncio.wait_for(aiohttp.get(self.reverse_url(path), params=kwargs,
@@ -120,8 +118,7 @@ class API(object):
         """
         Requests POST wrapper in order to use API parameters.
 
-        Arguments:
-        - `path`: the request path
+        :param path: The request path.
         """
         if 'self_' in kwargs:
             kwargs['self'] = kwargs.pop('self_')

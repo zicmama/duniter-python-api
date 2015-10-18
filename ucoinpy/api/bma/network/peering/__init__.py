@@ -23,6 +23,11 @@ logger = logging.getLogger("ucoin/network/peering")
 
 class Base(Network):
     def __init__(self, connection_handler):
+        """
+        Constructor
+
+        :param connection_handler: The connection handler.
+        """
         super(Base, self).__init__(connection_handler, 'network/peering')
 
 
@@ -30,12 +35,22 @@ class Peers(Base):
     """GET peering entries of every node inside the currency network."""
 
     def __get__(self, **kwargs):
-        """creates a generator with one peering entry per iteration."""
+        """
+        GET peering entries of every node inside the currency network : /network/peering/peers
+        Creates a generator with one peering entry per iteration.
+
+        :param kwargs:
+        """
 
         r = yield from self.requests_get('/peers', **kwargs)
         return (yield from r.json())
 
     def __post__(self, **kwargs):
+        """
+        POST a UCG peering entry document to this node in order to alter UCG peering table : /network/peering/peers
+
+        :param kwargs: 2 fields required : field "entry" and field "signature".
+        """
         assert 'entry' in kwargs
         assert 'signature' in kwargs
 
@@ -44,9 +59,14 @@ class Peers(Base):
 
 
 class Status(Base):
-    """POST a network status document to this node in order notify of its status."""
+    """POST a network Status document to this node in order notify of its status."""
 
     def __post__(self, **kwargs):
+        """
+        POST a network Status document to this node in order notify of its status.
+
+        :param kwargs: 2 fields required : field "status" and field "signature".
+        """
         assert 'status' in kwargs
         assert 'signature' in kwargs
 

@@ -22,28 +22,37 @@ logger = logging.getLogger("ucoin/tx")
 
 
 class Tx(API):
-    """
+    """  """
 
-    """
     def __init__(self, connection_handler, module='tx'):
         """
+        Constructor
 
+        :param conn_handler:
+        :param str module: (Default value = tx)
         """
         super(Tx, self).__init__(connection_handler, module)
 
 
 class History(Tx):
-    """Get transaction sources."""
+    """Get transaction history from a public key : /tx/history/[PUBKEY]"""
+
     def __init__(self, conn_handler, pubkey, module='tx'):
         """
+        Constructor
 
+        :param conn_handler:
+        :param str pubkey: The wallet public key.
+        :param str module: (Default value = tx)
         """
         super(Tx, self).__init__(conn_handler, module)
         self.pubkey = pubkey
 
     def __get__(self, **kwargs):
         """
+        Get transaction history from a public key : /tx/history/[PUBKEY]
 
+        :param kwargs:
         """
         assert self.pubkey is not None
         r = yield from self.requests_get('/history/%s' % self.pubkey, **kwargs)
@@ -55,26 +64,34 @@ class Process(Tx):
 
     def __post__(self, **kwargs):
         """
+        POST a transaction.
 
+        :param kwargs: The field "transaction" is required : /tx/process
         """
         assert 'transaction' in kwargs
-
         r = yield from self.requests_post('/process', **kwargs)
         return r
 
 
 class Sources(Tx):
-    """Get transaction sources."""
+    """Get the Transaction sources."""
+
     def __init__(self, connection_handler, pubkey, module='tx'):
         """
+        Constructor
 
+        :param conn_handler: The connection handler.
+        :param str pubkey: Owner of the coins' public key.
+        :param str module: (Default value = tx)
         """
         super(Tx, self).__init__(connection_handler, module)
         self.pubkey = pubkey
 
     def __get__(self, **kwargs):
         """
+        Get the Transaction sources : /tx/sources
 
+        :param kwargs:
         """
         assert self.pubkey is not None
         r = yield from self.requests_get('/sources/%s' % self.pubkey, **kwargs)

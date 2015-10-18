@@ -25,9 +25,13 @@ class Blockchain(API):
     """
 
     """
+
     def __init__(self, connection_handler, module='blockchain'):
         """
+        Constructor
 
+        :param connection_handler: The connection handler.
+        :param str module: (Default value = blockchain)
         """
         super(Blockchain, self).__init__(connection_handler, module)
 
@@ -37,24 +41,32 @@ class Parameters(Blockchain):
 
     def __get__(self, **kwargs):
         """
+        GET the blockchain parameters used by this node : /blockchain/parameters
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/parameters', **kwargs)
         return (yield from r.json())
 
 
 class Membership(Blockchain):
-    """GET/POST a Membership document."""
+    """ GET/POST a Membership document. """
+
     def __init__(self, connection_handler, search=None):
         """
+        Constructor
 
+        :param connection_handler: The connection handler.
+        :param search: (Default = None)
         """
         super().__init__(connection_handler)
         self.search = search
 
     def __post__(self, **kwargs):
         """
+        POST a Membership document to the blockchain : /blockchain/membership
 
+        :param kwargs: The field "membership" is required.
         """
         assert 'membership' in kwargs
 
@@ -63,7 +75,9 @@ class Membership(Blockchain):
 
     def __get__(self, **kwargs):
         """
+        GET a list of Memberships documents issued by the member and written in the blockhain : /blockchain/memberships/[search]
 
+        :param kwargs:
         """
         assert self.search is not None
         r = yield from self.requests_get('/memberships/%s' % self.search, **kwargs)
@@ -71,23 +85,24 @@ class Membership(Blockchain):
 
 
 class Block(Blockchain):
-    """GET/POST a block from/to the blockchain."""
+    """ GET/POST a block from/to the blockchain. """
 
     def __init__(self, connection_handler, number=None):
         """
-        Use the number parameter in order to select a block number.
+        Constructor - Use the number parameter in order to select a block number.
 
-        Arguments:
-        - `number`: block number to select
+        :param connection_handler: The connection handler.
+        :param int number: The block number to select. (Default = None)
         """
-
         super(Block, self).__init__(connection_handler)
 
         self.number = number
 
     def __get__(self, **kwargs):
         """
+        GET a block from the blockchain : /blockchain/block/[NUMBER]
 
+        :param kwargs:
         """
         assert self.number is not None
         r = yield from self.requests_get('/block/%d' % self.number, **kwargs)
@@ -95,7 +110,9 @@ class Block(Blockchain):
 
     def __post__(self, **kwargs):
         """
+        POST a block to the blockchain : blockchain/block
 
+        :param kwargs: 2 fields required : field "block" and field "signature".
         """
         assert 'block' in kwargs
         assert 'signature' in kwargs
@@ -105,34 +122,37 @@ class Block(Blockchain):
 
 
 class Current(Blockchain):
-    """GET, same as block/[number], but return last accepted block."""
+    """ GET, same as block/[number], but return last accepted block. """
 
     def __get__(self, **kwargs):
         """
+        GET, same as block/[number], but return last accepted block : /blockchain/current
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/current', **kwargs)
         return (yield from r.json())
 
 
 class Hardship(Blockchain):
-    """GET hardship level for given member's fingerprint for writing next block."""
+    """ GET hardship level for given member's fingerprint for writing next block. """
 
     def __init__(self, connection_handler, fingerprint):
         """
-        Use the number parameter in order to select a block number.
+        Constructor - Use the number parameter in order to select a block number.
 
-        Arguments:
-        - `fingerprint`: member fingerprint
+        :param connection_handler: The connection handler.
+        :param str fingerprint: The member fingerprint.
         """
-
         super(Hardship, self).__init__(connection_handler)
 
         self.fingerprint = fingerprint
 
     def __get__(self, **kwargs):
         """
+        GET hardship level for given member's fingerprint for writing next block.
 
+        :param kwargs:
         """
         assert self.fingerprint is not None
         r = yield from self.requests_get('/hardship/%s' % self.fingerprint.upper(), **kwargs)
@@ -140,88 +160,104 @@ class Hardship(Blockchain):
 
 
 class Newcomers(Blockchain):
-    """GET, return block numbers containing newcomers."""
+    """ GET, returns block numbers containing newcomers. """
 
     def __get__(self, **kwargs):
         """
+        GET, returns block numbers containing newcomers : /blockchain/newcomers
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/with/newcomers', **kwargs)
         return (yield from r.json())
 
 
 class Certifications(Blockchain):
-    """GET, return block numbers containing certifications."""
+    """ GET, returns block numbers containing certifications. """
 
     def __get__(self, **kwargs):
         """
+        GET, returns block numbers containing certifications.
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/with/certs', **kwargs)
         return (yield from r.json())
 
 
 class Joiners(Blockchain):
-    """GET, return block numbers containing joiners."""
+    """ GET, returns block numbers containing joiners. """
 
     def __get__(self, **kwargs):
         """
+        GET, returns block numbers containing joiners.
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/with/joiners', **kwargs)
         return (yield from r.json())
 
 
 class Actives(Blockchain):
-    """GET, return block numbers containing actives."""
+    """ GET, returns block numbers containing actives. """
 
     def __get__(self, **kwargs):
         """
+        GET, returns block numbers containing actives.
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/with/actives', **kwargs)
         return (yield from r.json())
 
 
 class Leavers(Blockchain):
-    """GET, return block numbers containing leavers."""
+    """ GET, returns block numbers containing leavers. """
 
     def __get__(self, **kwargs):
         """
+        GET, returns block numbers containing leavers.
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/with/leavers', **kwargs)
         return (yield from r.json())
 
 
 class Excluded(Blockchain):
-    """GET, return block numbers containing excluded."""
+    """GET, returns block numbers containing excluded."""
 
     def __get__(self, **kwargs):
         """
+        GET, returns block numbers containing excluded.
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/with/excluded', **kwargs)
         return (yield from r.json())
 
 
 class UD(Blockchain):
-    """GET, return block numbers containing universal dividend."""
+    """GET, returns block numbers containing universal dividend."""
 
     def __get__(self, **kwargs):
         """
+        GET, returns block numbers containing Universal Dividend.
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/with/ud', **kwargs)
         return (yield from r.json())
 
 
 class TX(Blockchain):
-    """GET, return block numbers containing transactions."""
+    """GET, returns block numbers containing transactions."""
 
     def __get__(self, **kwargs):
         """
+        GET, returns block numbers containing transactions : /with/tx
 
+        :param kwargs:
         """
         r = yield from self.requests_get('/with/tx', **kwargs)
         return (yield from r.json())

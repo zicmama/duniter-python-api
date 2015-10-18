@@ -22,28 +22,32 @@ logger = logging.getLogger("ucoin/node")
 
 
 class Node(API):
-    """
+    """ Get technical informations about this node. """
 
-    """
     def __init__(self, connection_handler, module='node'):
         """
+        Constructor
 
+        :param connection_handler: The connection handler.
+        :param str module: (Default value = node)
         """
         super(Node, self).__init__(connection_handler, module)
 
 
 class Summary(Node):
-    """GET Certification data over a member."""
+    """ Get technical informations about this node. """
 
     def __init__(self, connection_handler, module='node'):
         """
+        Constructor
 
+        :param connection_handler: The connection handler.
+        :param str module: (Default value = node)
         """
         super(Summary, self).__init__(connection_handler, module)
 
     def __get__(self, **kwargs):
-        """
+        """ Get technical informations about this node. """
 
-        """
         r = yield from self.requests_get('/summary', **kwargs)
         return (yield from r.json())

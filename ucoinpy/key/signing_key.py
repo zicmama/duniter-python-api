@@ -1,5 +1,5 @@
 """
-Ucoin public and private keys
+uCoin public and private keys.
 
 @author: inso
 """
