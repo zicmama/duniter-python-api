@@ -352,7 +352,7 @@ MedianTime: {6}
             doc += "Parameters: {0}\n".format(str_params)
         else:
             doc += "PreviousHash: {0}\n\
-                    PreviousIssuer: {1}\n".format(self.prev_hash, self.prev_issuer)
+PreviousIssuer: {1}\n".format(self.prev_hash, self.prev_issuer)
 
         doc += "MembersCount: {0}\n".format(self.members_count)
 
