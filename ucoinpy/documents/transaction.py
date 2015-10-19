@@ -198,10 +198,10 @@ class Transaction(Document):
         :rtype: str
         """
         doc = """Version: {0}
-                Type: Transaction
-                Currency: {1}
-                Issuers:
-                """.format(self.version,
+Type: Transaction
+Currency: {1}
+Issuers:
+""".format(self.version,
                    self.currency)
 
         for p in self.issuers:

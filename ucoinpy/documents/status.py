@@ -88,11 +88,11 @@ class Status(Document):
         :rtype: str
         """
         return """Version: {0}
-                Type: Status
-                Currency: {1}
-                Status: {2}
-                Block: {3}
-                From: {4}
-                To: {5}
-                """.format(self.version, self.currency, self.status,
+Type: Status
+Currency: {1}
+Status: {2}
+Block: {3}
+From: {4}
+To: {5}
+""".format(self.version, self.currency, self.status,
            self.blockid, self.sender, self.recipient)

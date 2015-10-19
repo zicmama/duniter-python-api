@@ -70,8 +70,8 @@ class SelfCertification(Document):
         :rtype: str
         """
         return """UID:{0}
-                META:TS:{1}
-                """.format(self.uid, self.timestamp)
+META:TS:{1}
+""".format(self.uid, self.timestamp)
 
     def inline(self):
         """
@@ -153,7 +153,7 @@ class Certification(Document):
         :rtype: str
         """
         return """{0}META:TS:{1}-{2}
-                """.format(selfcert.signed_raw(), self.blocknumber, self.blockhash)
+""".format(selfcert.signed_raw(), self.blocknumber, self.blockhash)
 
     def sign(self, selfcert, keys):
         """
@@ -218,8 +218,7 @@ class Revocation(Document):
         :return: The self-Revocation as a string document.
         :rtype: str
         """
-        return """{0}META:REVOKE
-        """.format(selfcert.signed_raw())
+        return """{0}META:REVOKE""".format(selfcert.signed_raw())
 
     def sign(self, selfcert, keys):
         """

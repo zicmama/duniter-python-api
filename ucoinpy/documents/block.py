@@ -328,14 +328,14 @@ class Block(Document):
         :rtype: str
         """
         doc = """Version: {0}
-                Type: Block
-                Currency: {1}
-                Nonce: {2}
-                Number: {3}
-                PoWMin: {4}
-                Time: {5}
-                MedianTime: {6}
-                """.format(self.version,
+Type: Block
+Currency: {1}
+Nonce: {2}
+Number: {3}
+PoWMin: {4}
+Time: {5}
+MedianTime: {6}
+""".format(self.version,
                       self.currency,
                       self.noonce,
                       self.number,

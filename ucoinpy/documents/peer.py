@@ -93,12 +93,12 @@ class Peer(Document):
         :rtype: str
         """
         doc = """Version: {0}
-                Type: Peer
-                Currency: {1}
-                PublicKey: {2}
-                Block: {3}
-                Endpoints:
-                """.format(self.version, self.currency, self.pubkey, self.blockid)
+Type: Peer
+Currency: {1}
+PublicKey: {2}
+Block: {3}
+Endpoints:
+""".format(self.version, self.currency, self.pubkey, self.blockid)
 
         for endpoint in self.endpoints:
             doc += "{0}\n".format(endpoint.inline())
