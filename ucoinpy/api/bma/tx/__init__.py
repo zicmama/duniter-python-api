@@ -22,7 +22,6 @@ logger = logging.getLogger("ucoin/tx")
 
 
 class Tx(API):
-    """  """
 
     def __init__(self, connection_handler, module='tx'):
         """
