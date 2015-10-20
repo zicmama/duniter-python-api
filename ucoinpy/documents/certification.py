@@ -25,12 +25,12 @@ class SelfCertification(Document):
         """
         Constructor of a SelfCertification
 
-        :param int version: uCoin protocol version.
-        :param str currency: The self-Certification currency target.
-        :param str pubkey: The pubkey which is self-certified.
-        :param int ts: The timestamp of the self-Certification.
-        :param str uid: The uid which is self-certified.
-        :param str signature: The signature of the self-Certification.
+        :param int version: ucoin protocol version
+        :param str currency: the self certification currency target
+        :param str pubkey: the pubkey which is self-certified
+        :param int ts: the timestamp of the self-certification
+        :param str uid: the uid which is self-certified
+        :param str signature: the signature of the self-certification
         """
         if signature:
             super().__init__(version, currency, [signature])
@@ -45,14 +45,13 @@ class SelfCertification(Document):
         """
         Creates a SelfCertification from an inline format.
 
-.. note :: An inline self-certification is specified by the following format :
+.. note :: An inline self certification is specified by the following format :
+PUBLIC_KEY:SIGNATURE:TIMESTAMP:USER_ID
 
-        | PUBLIC_KEY:SIGNATURE:TIMESTAMP:USER_ID
-
-        :param int version: uCoin protocol version.
-        :param str currency: The self-Certification currency target.
-        :param str inline: The inline self-Certification.
-        :return: The inline self-Certification.
+        :param int version: ucoin protocol version
+        :param str currency: the self certification currency target
+        :param str inline: the inline self-certification
+        :return: the inline SelfCertification
         :rtype: SelfCertification
         """
         selfcert_data = SelfCertification.re_inline.match(inline)
@@ -106,13 +105,13 @@ class Certification(Document):
         """
         Constructor
 
-        :param int version: uCoin protocol version.
-        :param str currency: the self certification currency target.
-        :param str pubkey_from: the pubkey which is certifying.
-        :param str pubkey_to: the pubkey which is certified.
-        :param int blocknumber: The block number of the Certification.
-        :param str blockhash: the block hash of the certification.
-        :param str signature: the signature of the certification.
+        :param int version: ucoin protocol version
+        :param str currency: the self certification currency target
+        :param str pubkey_from: the pubkey which is certifying
+        :param str pubkey_to: the pubkey which is certified
+        :param int blocknumber: the block number of the certification
+        :param str blockhash: the block hash of the certification
+        :param str signature: the signature of the certification
         """
         super().__init__(version, currency, [signature])
         self.pubkey_from = pubkey_from

@@ -99,6 +99,27 @@ class Block(Document):
     | ...
     | BOTTOM_SIGNATURE
 
+
+    :param int version: ucoin protocol version
+    :param str currency: the block currency
+    :param int noonce: the noonce value of the block
+    :param int number: the number of the block
+    :param int powmin: the powmin value of this block
+    :param int time: the timestamp of this block
+    :param int ud: the dividend amount, or None if no dividend present in this block
+    :param str issuer: the pubkey of the issuer of the block
+    :param str prev_hash: the previous block hash
+    :param str prev_issuer: the previous block issuer
+    :param tuple parameters: the parameters of the currency. Should only be present in block 0.
+    :param int members_count: the number of members found in this block
+    :param list[ucoinpy.documents.SelfCertification] identities: the self certifications declared in this block
+    :param list[ucoinpy.documents.Membership] joiners: the joiners memberships via "IN" documents
+    :param list[ucoinpy.documents.Membership] actives: renewed memberships via "IN" documents
+    :param list[ucoinpy.documents.Membership] leavers: the leavers memberships via "OUT" documents
+    :param list[ucoinpy.documents.Membership] excluded: members excluded because of missing certifications
+    :param list[ucoinpy.documents.Membership] actives: renewed memberships via "IN" documents
+    :param list[ucoinpy.documents.Certification] certifications: certifications documents
+    :param list[ucoinpy.documents.Transaction] transactions: transactions documents
     """
 
     re_type = re.compile("Type: (Block)\n")
@@ -133,27 +154,6 @@ class Block(Document):
                  transactions, signature):
         """
         Constructor
-
-        :param int version: ucoin protocol version
-        :param str currency: the block currency
-        :param int noonce: the noonce value of the block
-        :param int number: the number of the block
-        :param int powmin: the powmin value of this block
-        :param int time: the timestamp of this block
-        :param int ud: the dividend amount, or None if no dividend present in this block
-        :param str issuer: the pubkey of the issuer of the block
-        :param str prev_hash: the previous block hash
-        :param str prev_issuer: the previous block issuer
-        :param tuple parameters: the parameters of the currency. Should only be present in block 0.
-        :param int members_count: the number of members found in this block
-        :param list[ucoinpy.documents.SelfCertification] identities: the self certifications declared in this block
-        :param list[ucoinpy.documents.Membership] joiners: the joiners memberships via "IN" documents
-        :param list[ucoinpy.documents.Membership] actives: renewed memberships via "IN" documents
-        :param list[ucoinpy.documents.Membership] leavers: the leavers memberships via "OUT" documents
-        :param list[ucoinpy.documents.Membership] excluded: members excluded because of missing certifications
-        :param list[ucoinpy.documents.Membership] actives: renewed memberships via "IN" documents
-        :param list[ucoinpy.documents.Certification] certifications: certifications documents
-        :param list[ucoinpy.documents.Transaction] transactions: transactions documents
         """
         super().__init__(version, currency, [signature])
         self.noonce = noonce
