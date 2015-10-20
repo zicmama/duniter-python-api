@@ -13,8 +13,9 @@ ucoinpy helps to handle the following problem :
 * Request nodes in a non-blocking way
 * Handle uCoin signing keys
 
+
 .. image:: https://travis-ci.org/ucoin-io/ucoin-python-api.svg?branch=master
-   :alt: alternate text
+   :alt: Travis - Build's status of the project.
 
 
 Library Installation
