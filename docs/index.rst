@@ -8,11 +8,18 @@ ucoinpy : A python implementation of uCoin API
 
 ucoinpy is a library to develop an application for uCoin.
 ucoinpy helps to handle the following problem :
-* Request Basic Merkle API provided by ucoin nodes
-* Request nodes in a non-blocking way
-* Handle ucoin signing keys
 
-https://travis-ci.org/ucoin-io/ucoin-python-api.svg?branch=master
+* Request Basic Merkle API provided by uCoin nodes
+* Request nodes in a non-blocking way
+* Handle uCoin signing keys
+
+.. image:: https://travis-ci.org/ucoin-io/ucoin-python-api.svg?branch=master
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :alt: alternate text
+   :align: right
+
 
 Library Installation
 ----------------------
