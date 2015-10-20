@@ -51,6 +51,13 @@ Sources can be found at https://github.com/ucoin-io/ucoin-python-api
 
 Contributions are welcome.
 
+.. glossary::
+
+   environment
+      TEST - A structure where information about all documents under the root is
+      saved, and used for cross-referencing.  The environment is pickled
+      after the parsing stage, so that successive runs only need to read
+      and parse new and changed documents.
 
 Contents:
 =========
