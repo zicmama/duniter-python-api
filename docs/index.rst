@@ -15,7 +15,10 @@ ucoinpy helps to handle the following problem :
 Library Installation
 ----------------------
 
-    ``$ pip install ucoinpy``
+.. code-block:: python
+
+  $ pip install ucoinpy
+
 
 Getting Started
 ----------------
