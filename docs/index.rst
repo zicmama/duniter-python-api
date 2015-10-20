@@ -14,10 +14,6 @@ ucoinpy helps to handle the following problem :
 * Handle uCoin signing keys
 
 
-.. image:: https://travis-ci.org/ucoin-io/ucoin-python-api.svg?branch=master
-   :alt: Travis - Build's status of the project.
-
-
 Library Installation
 ----------------------
 
@@ -52,6 +48,11 @@ Client example::
 
 Source code
 -----------
+
+
+.. image:: https://travis-ci.org/ucoin-io/ucoin-python-api.svg?branch=master
+   :alt: Travis - Build's status of the project.
+
 
 Sources can be found at https://github.com/ucoin-io/ucoin-python-api
 
