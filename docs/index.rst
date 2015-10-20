@@ -14,11 +14,7 @@ ucoinpy helps to handle the following problem :
 * Handle uCoin signing keys
 
 .. image:: https://travis-ci.org/ucoin-io/ucoin-python-api.svg?branch=master
-   :height: 100px
-   :width: 200 px
-   :scale: 50 %
    :alt: alternate text
-   :align: right
 
 
 Library Installation
