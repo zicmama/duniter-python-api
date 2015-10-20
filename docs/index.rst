@@ -15,7 +15,7 @@ ucoinpy helps to handle the following problem :
 Library Installation
 ----------------------
 
-    `$ pip install ucoinpy`
+    ``$ pip install ucoinpy``
 
 Getting Started
 ----------------
