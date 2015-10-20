@@ -12,12 +12,34 @@ ucoinpy helps to handle the following problem :
 * Request nodes in a non-blocking way
 * Handle ucoin signing keys
 
-Installation
-------------
-
-Simply type::
+Library Installation
+----------------------
 
     $ pip install ucoinpy
+
+Getting Started
+----------------
+
+Client example::
+
+  import asyncio
+  import aiohttp
+  import ucoinpy
+
+  # Get the informations /node/summary from the given node :
+  def getSummaryInfo():
+      # Given node : [NAME_OF_THE_API] [DOMAIN] [IPV4] [IPV6 PORT]
+      myEndpoint = "BASIC_MERKLED_API sbhosting.me 51.254.203.24 fe80::f816:3eff:fe79:c9af 8999"
+
+      # Here we request for the path /node/ "summary" through the "Basic Merkled API"
+      summaryInfo = yield from Summary(Endpoint.from_inline(myEndpoint).conn_handler()).get()
+
+      print(summaryInfo)
+
+  # Latest uCoin-Python-API is asynchronous and you have to use asyncio, an asyncio loop and a "yield from" on the data.
+  # ( https://docs.python.org/3/library/asyncio.html )
+  asyncio.get_event_loop().run_until_complete(getSummaryInfo())
+
 
 Source code
 -----------
