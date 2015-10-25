@@ -13,18 +13,61 @@
 
   myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
 
+<br />
+
+--------------------
+
+<br />
+
+.. code-block:: python
+
+  # ----- Display general info on the currency network -----------
+
   nodeSummary = ""
 
   # Get the informations /node/summary from the given node :
-  # Information of the node.
   def getNodeSummary():
       global nodeSummary
       # Here we request for the path /node/ "summary" through the "Basic Merkled API"
       nodeSummary = yield from Summary(Endpoint.from_inline(myEndpoint).conn_handler()).get()
 
-  # ----- Display general info on the currency network -----------
+
   # Call the asynchronous function :
   asyncio.get_event_loop().run_until_complete(getNodeSummary())
 
-  print("nodeSummary : ")
+  print("\nnodeSummary : ")
   print(nodeSummary)
+
+<br />
+
+--------------------
+
+<br />
+
+.. code-block:: python
+  # ----- Display general info on the currency network -----------
+
+  blockchainParameters = ""
+
+  # Get the informations /blockchain/parameters from the given node :
+  # Information of the blockchain or currency
+  def getBlockchainParameters():
+      global blockchainParameters
+      # Here we request for the path /blockchain/ "parameters" through the "Basic Merkled API"
+      blockchainParameters = yield from Parameters(Endpoint.from_inline(myEndpoint).conn_handler()).get()
+
+  asyncio.get_event_loop().run_until_complete(getBlockchainParameters())
+
+  # ----- Display general info on the currency network -----------
+  # Call the asynchronous function :
+  print("\nblockchainParameters :")
+  print(blockchainParameters)
+
+  <br />
+
+  --------------------
+
+  <br />
+
+.. code-block:: python
+    # ----- Display general info on the currency network -----------
