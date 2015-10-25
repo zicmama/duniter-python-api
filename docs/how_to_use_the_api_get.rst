@@ -40,8 +40,7 @@ Imports and initializations of variables :
   print(nodeSummary)
 
 
---------------------
-
+``/node/summary`` : https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#nodesummary
 
 .. code-block:: python
   # ----- Display general info on the currency network -----------
