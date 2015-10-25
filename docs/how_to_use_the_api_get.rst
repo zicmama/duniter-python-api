@@ -1,4 +1,7 @@
-#### How to use the Python uCoin API to Get a specified data
+How to use the Python uCoin API to Get specified data
+--------------------------------------------------------
+
+Imports and initializations of variables :
 
 .. code-block:: python
 
@@ -13,11 +16,9 @@
 
   myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
 
-<br />
 
 --------------------
 
-<br />
 
 .. code-block:: python
 
@@ -38,11 +39,9 @@
   print("\nnodeSummary : ")
   print(nodeSummary)
 
-<br />
 
 --------------------
 
-<br />
 
 .. code-block:: python
   # ----- Display general info on the currency network -----------
@@ -63,11 +62,9 @@
   print("\nblockchainParameters :")
   print(blockchainParameters)
 
-  <br />
 
   --------------------
 
-  <br />
 
 .. code-block:: python
     # ----- Display general info on the currency network -----------
