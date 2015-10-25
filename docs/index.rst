@@ -68,6 +68,7 @@ Contents:
    documents
    key
    bma
+   how_to_use_the_api_get
 
 
 Indices and tables
