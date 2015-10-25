@@ -517,7 +517,7 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txhistorypubkeytim
 
   # ----------- Get the wallet transaction history  -----------
 
-  # Can generate an error on an empty blockchain, if the network has not yet certified peers.
+  # Not yet implemented in the Python API : /wot/requirements
 
   txHistoryTimes = ""
 
