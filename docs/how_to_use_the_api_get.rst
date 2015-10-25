@@ -39,7 +39,7 @@ How to use the Python uCoin API to Get specified data
 
 * ``/tx/history/[PUBKEY]/times/[FROM]/[TO]``
 
-<a href="http://searx.me">test</a>
+
 
 Imports and initializations of variables :
 
