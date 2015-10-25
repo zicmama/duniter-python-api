@@ -8,12 +8,16 @@ BMA [BasicMerkleAPI]
    :special-members:
    :exclude-members: __dict__,__weakref__
 
+<br />
+
 Blockchain
 --------------
 .. automodule:: ucoinpy.api.bma.blockchain.__init__
   :members:
   :special-members:
   :exclude-members: __dict__,__weakref__
+
+<br />
 
 TX
 -----------------
