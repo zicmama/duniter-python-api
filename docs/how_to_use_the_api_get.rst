@@ -39,7 +39,7 @@ How to use the Python uCoin API to Get specified data
 
 * ``/tx/history/[PUBKEY]/times/[FROM]/[TO]``
 
-
+<a href="http://searx.me">test</a>
 
 Imports and initializations of variables :
 
@@ -190,10 +190,11 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#networkpeeringpeer
   print(peeringPeers)
 
 
-Get information from the blockchain with a given public key :
-
 
 \- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+Get information from the blockchain with a given public key :
 
 
 ``/wot/loookup/[pubkey]`` :
@@ -450,7 +451,7 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#udhistorypubkey
 \- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-``blockchain/block/[NUMBER]`` :
+``/blockchain/block/[NUMBER]`` :
 
 https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainblocknumber
 
@@ -508,7 +509,7 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txhistorypubkeyblo
 \- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-``tx/history/[PUBKEY]/times/[FROM]/[TO]`` :
+``/tx/history/[PUBKEY]/times/[FROM]/[TO]`` :
 
 https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txhistorypubkeytimesfromto
 
