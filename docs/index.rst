@@ -69,6 +69,7 @@ Contents:
    key
    bma
    how_to_use_the_api_get
+   how_to_use_the_api_post
 
 
 Indices and tables
