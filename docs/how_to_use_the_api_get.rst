@@ -25,8 +25,6 @@ How to use the Python uCoin API to Get specified data
 
 * ``/blockchain/memberships/[pubkey]``
 
-Not yet implemented in the BasicMerkledAPI :
-
 * ``/blockchain/hardship/[pubkey]``
 
 * ``/tx/sources/[pubkey]``
@@ -40,8 +38,6 @@ Not yet implemented in the BasicMerkledAPI :
 * ``/blockchain/block/[NUMBER]``
 
 * ``/tx/history/[PUBKEY]/blocks/[FROM]/[TO]``
-
-Not yet implemented in the Python API :
 
 * ``/tx/history/[PUBKEY]/times/[FROM]/[TO]``
 
