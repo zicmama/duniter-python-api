@@ -33,11 +33,9 @@ Client example::
 
   # Get the information /node/summary from the given node :
   def getSummaryInfo():
-      # The given node : [NAME_OF_THE_API] [DOMAIN] [IPV4] [IPV6] PORT]
-      myEndpoint = "BASIC_MERKLED_API sbhosting.me 51.254.203.24 fe80::f816:3eff:fe79:c9af 8999"
-
-      # or the Given node : [NAME_OF_THE_API] [DOMAIN] [PORT]
-      myEndpoint = "BASIC_MERKLED_API sbhosting.me 8999"
+      # You can use either a complete defined endpoint : [NAME_OF_THE_API] [DOMAIN] [IPv4] [IPv6] [PORT]
+      # or the simple definition : [NAME_OF_THE_API] [DOMAIN] [PORT]
+      myEndpoint = "BASIC_MERKLED_API metab.ucoin.io 9201"
 
       # Here we request for the path /node/ "summary" through the "Basic Merkled API"
       summaryInfo = yield from Summary(Endpoint.from_inline(myEndpoint).conn_handler()).get()
