@@ -1,6 +1,8 @@
 Key classes :
-=================
+==============
 
+Signing key
+------------
 .. automodule:: ucoinpy.key.signing_key
    :members:
    :special-members:
