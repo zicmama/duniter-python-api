@@ -68,11 +68,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   how_to_use_the_api_get
+   how_to_use_the_api_post
    documents
    key
    bma
-   how_to_use_the_api_get
-   how_to_use_the_api_post
 
 
 Indices and tables
