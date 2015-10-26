@@ -52,7 +52,7 @@ How to use the Python uCoin API to Get specified data
   # You can use either a complete defined endpoint ( with IPV4 / IPV6 ) or the simple definition : domain name + port number.
 
   # Given node : [NAME_OF_THE_API] [DOMAIN] [IPv4] [IPv6] PORT]
-  #myEndpoint = "BASIC_MERKLED_API sbhosting.me 51.254.203.24 fe80::f816:3eff:fe79:c9af 8999"
+  #myEndpoint = "BASIC_MERKLED_API metab.ucoin.io 88.174.120.187 8999"
   # Given node : [NAME_OF_THE_API] [DOMAIN] [PORT]
   myEndpoint = "BASIC_MERKLED_API metab.ucoin.io 9201"
 
@@ -125,7 +125,6 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchaincurrent
   # ----- Same as block/[number], but return last accepted block. -----------
 
   # Can generate an error on an empty blockchain, if the network has not yet certified peers.
-
   blockchainCurrent = ""
 
   # Get the informations /blockchain/current from the given node :
@@ -234,7 +233,6 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#networkpeeringpeer
   # ------- GET requirements to be filled by pubkey to become a member. ----
 
   # Not yet implemented in the Python API : /wot/requirements
-
   wotRequirements = ""
 
   # Get the informations /wot/requirements/[pubkey] from the given node :
@@ -264,7 +262,6 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#wotcertifiers-ofse
   # -------------- GET Certification data over a member. -------------
 
   # Can generate an error on an empty blockchain, if the network has not yet certified peers.
-
   wotCertifiersOf = ""
 
   # Get the informations /wot/certifiers-of/[pubkey] from the given node :
@@ -293,7 +290,6 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#wotcertified-bysea
   # -------------- GET Certification data over a member. -------------
 
   # Can generate an error on an empty blockchain, if the network has not yet certified peers.
-
   wotCertifiedBy = ""
 
   # Get the informations /wot/certified-by/[pubkey] from the given node :
@@ -322,7 +318,6 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainmembersh
   # -------- GET Membership data written for a member. ----------------
 
   # Can generate an error on an empty blockchain, if the network has not yet certified peers.
-
   blockchainMemberships = ""
 
   # Get the informations /blockchain/memberships/[pubkey] from the given node :
@@ -349,9 +344,6 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainhardship
 .. code-block:: python
 
   # --------------- GET hardship level for given member's pubkey for writing next block. -----------
-
-  # Not yet implemented in uCoin : /blockchain/hardship/[pubkey]
-
   blockchainHardship = ""
 
   # Get the informations /blockchain/hardship/[pubkey] from the given node :
