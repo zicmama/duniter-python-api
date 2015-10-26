@@ -56,8 +56,6 @@ How to use the Python uCoin API to Get specified data
   # Given node : [NAME_OF_THE_API] [DOMAIN] [PORT]
   myEndpoint = "BASIC_MERKLED_API metab.ucoin.io 9201"
 
-  myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
-
 
 \- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -205,6 +203,8 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#wotlookupsearch
 .. code-block:: python
 
   # -------------- GET Public key data. -------------
+
+  myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
   wotLookup = ""
 
   # Get the informations /wot/lookup/[pubkey] from the given node :
@@ -233,6 +233,8 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#networkpeeringpeer
   # ------- GET requirements to be filled by pubkey to become a member. ----
 
   # Not yet implemented in the Python API : /wot/requirements
+
+  myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
   wotRequirements = ""
 
   # Get the informations /wot/requirements/[pubkey] from the given node :
@@ -262,6 +264,8 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#wotcertifiers-ofse
   # -------------- GET Certification data over a member. -------------
 
   # Can generate an error on an empty blockchain, if the network has not yet certified peers.
+
+  myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
   wotCertifiersOf = ""
 
   # Get the informations /wot/certifiers-of/[pubkey] from the given node :
@@ -290,6 +294,8 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#wotcertified-bysea
   # -------------- GET Certification data over a member. -------------
 
   # Can generate an error on an empty blockchain, if the network has not yet certified peers.
+
+  myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
   wotCertifiedBy = ""
 
   # Get the informations /wot/certified-by/[pubkey] from the given node :
@@ -318,6 +324,8 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainmembersh
   # -------- GET Membership data written for a member. ----------------
 
   # Can generate an error on an empty blockchain, if the network has not yet certified peers.
+
+  myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
   blockchainMemberships = ""
 
   # Get the informations /blockchain/memberships/[pubkey] from the given node :
@@ -344,6 +352,8 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainhardship
 .. code-block:: python
 
   # --------------- GET hardship level for given member's pubkey for writing next block. -----------
+
+  myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
   blockchainHardship = ""
 
   # Get the informations /blockchain/hardship/[pubkey] from the given node :
@@ -370,6 +380,8 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txsourcespubkey
 .. code-block:: python
 
   # ----------- GET a list of available sources. -----------
+
+  myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
   txSources = ""
 
   # Get the informations /tx/sources/[pubkey] from the given node :
@@ -396,6 +408,8 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txhistorypubkey
 .. code-block:: python
 
   # ----------- Get the wallet transaction history. -----------
+
+  myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
   txHistory = ""
 
   # Get the informations /tx/history/[pubkey] from the given node :
@@ -425,6 +439,7 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#udhistorypubkey
 
   # Can generate an error on an empty blockchain, if the network has not yet certified peers.
 
+  myPubKeyMB = "HnFcSms8jzwngtVomTTnzudZx7SHUQY8sVE1y8yBmULk"
   udHistory = ""
 
   # Get the informations /ud/history/[pubkey] from the given node :
