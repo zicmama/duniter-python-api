@@ -47,7 +47,7 @@ Not yet implemented in the Python API :
 
 
 
-Imports and initializations of variables :
+**Imports and initializations of variables :**
 
 .. code-block:: python
 
