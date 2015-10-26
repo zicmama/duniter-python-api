@@ -525,7 +525,3 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txhistorypubkeytim
   # ----------- Get the wallet transaction history  -----------
 
   # Not yet implemented in the Python API : /tx/history/[PUBKEY]/times/[FROM]/[TO]
-
-  txHistoryTimes = ""
-
-  # Get the informations /tx/history/[PUBKEY]/times/[FROM]/[TO] from the given node :
