@@ -25,6 +25,8 @@ How to use the Python uCoin API to Get specified data
 
 * ``/blockchain/memberships/[pubkey]``
 
+Not yet implemented in the BasicMerkledAPI :
+
 * ``/blockchain/hardship/[pubkey]``
 
 * ``/tx/sources/[pubkey]``
@@ -38,6 +40,8 @@ How to use the Python uCoin API to Get specified data
 * ``/blockchain/block/[NUMBER]``
 
 * ``/tx/history/[PUBKEY]/blocks/[FROM]/[TO]``
+
+Not yet implemented in the Python API :
 
 * ``/tx/history/[PUBKEY]/times/[FROM]/[TO]``
 
@@ -462,7 +466,7 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainblocknum
   # ----------- GET the promoted block from the given number. -----------
 
   # Can generate an error on an empty blockchain, if the network has not yet certified peers.
-
+  numberBlock = 3
   blockchainBlock = ""
 
   # Get the informations /blockchain/block/[NUMBER] from the given node :
@@ -491,7 +495,8 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txhistorypubkeyblo
   # ----------- GET the promoted block from the given number.  -----------
 
   # Can generate an error on an empty blockchain, if the network has not yet certified peers.
-
+  fromBlock = 1
+  toBlock = 3
   txHistoryBlocks = ""
 
   # Get the informations /tx/history/[PUBKEY]/blocks/[FROM]/[TO] from the given node :
@@ -519,7 +524,7 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txhistorypubkeytim
 
   # ----------- Get the wallet transaction history  -----------
 
-  # Not yet implemented in the Python API : /wot/requirements
+  # Not yet implemented in the Python API : /tx/history/[PUBKEY]/times/[FROM]/[TO]
 
   txHistoryTimes = ""
 
