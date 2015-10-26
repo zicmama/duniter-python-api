@@ -529,14 +529,3 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txhistorypubkeytim
   txHistoryTimes = ""
 
   # Get the informations /tx/history/[PUBKEY]/times/[FROM]/[TO] from the given node :
-  # Information on the given block on the blockchain, with the given public key.
-  def getTxHistoryTimes():
-      global txHistoryTimes
-      # Here we request for the path /tx/history/[PUBKEY]/times/[FROM]/[TO] through the "Basic Merkled API"
-      txHistoryTimes = yield from history.Blocks(Endpoint.from_inline(myEndpoint).conn_handler(), myPubKey, fromBlock, toBlock).get()
-
-  # Call the asynchronous function :
-  asyncio.get_event_loop().run_until_complete(getTxHistoryTimes())
-
-  print("\ntxHistoryTimes")
-  print(txHistoryTimes)
