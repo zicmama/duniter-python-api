@@ -7,25 +7,9 @@ How to use the Python uCoin API to Get specified data
 
 * ``/blockchain/current``
 
-\
-
 * ``/network/peering``
 
 * ``/network/peering/peers``
-
-\
-
-* ``/wot/loookup/[pubkey]``
-
-* ``/wot/requirements/[pubkey]``
-
-* ``/wot/certifiers-of/[pubkey]``
-
-* ``/wot/certified-by/[pubkey]``
-
-* ``/blockchain/memberships/[pubkey]``
-
-* ``/blockchain/hardship/[pubkey]``
 
 * ``/blockchain/with/newcomers``
 
@@ -40,6 +24,20 @@ How to use the Python uCoin API to Get specified data
 * ``/blockchain/with/ud``
 
 * ``/blockchain/with/tx``
+
+\
+
+* ``/wot/loookup/[pubkey]``
+
+* ``/wot/requirements/[pubkey]``
+
+* ``/wot/certifiers-of/[pubkey]``
+
+* ``/wot/certified-by/[pubkey]``
+
+* ``/blockchain/memberships/[pubkey]``
+
+* ``/blockchain/hardship/[pubkey]``
 
 * ``/tx/sources/[pubkey]``
 
