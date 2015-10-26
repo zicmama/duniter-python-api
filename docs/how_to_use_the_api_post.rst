@@ -1,4 +1,4 @@
-How to use the Python uCoin API to POST specified data
+How to use uCoinPy to POST specified data
 --------------------------------------------------------
 
 * ``/wot/add``
