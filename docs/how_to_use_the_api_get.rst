@@ -25,6 +25,8 @@ How to use the Python uCoin API to Get specified data
 
 * ``/blockchain/with/tx``
 
+* ``/blockchain/branches``
+
 \
 
 * ``/wot/loookup/[pubkey]``
@@ -519,8 +521,56 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainwithexcl
       # Call the asynchronous function :
       asyncio.get_event_loop().run_until_complete(getBlockchainWithExcluded())
 
-      print("\nblockchainWithLeavers :")
+      print("\nblockchainWithExcluded :")
       print(blockchainWithExcluded)
+
+
+\- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+``blockchain/with/ud`` :
+
+https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainwithud
+
+.. code-block:: python
+
+  # --------------- GET the block numbers containing Universal Dividend. -----------
+  blockchainWithUd = ""
+
+  # Get the informations /blockchain/with/ud from the given node :
+  def getBlockchainWithUd():
+      global blockchainWithUd
+      # Here we request for the path /blockchain/ "with/ud" through the "Basic Merkled API"
+      blockchainWithUd = yield from blockchain.UD(Endpoint.from_inline(myEndpoint).conn_handler()).get()
+
+      # Call the asynchronous function :
+      asyncio.get_event_loop().run_until_complete(getBlockchainWithUd())
+
+      print("\nblockchainWithUd :")
+      print(blockchainWithUd)
+
+
+\- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+``blockchain/with/tx`` :
+
+https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainwithtx
+
+.. code-block:: python
+
+  # --------------- GET the block numbers containing excluded members. -----------
+  blockchainWithTx = ""
+
+  # Get the informations /blockchain/with/tx from the given node :
+  def getBlockchainWithTx():
+      global blockchainWithTx
+      # Here we request for the path /blockchain/ "with/tx" through the "Basic Merkled API"
+      blockchainWithTx = yield from blockchain.TX(Endpoint.from_inline(myEndpoint).conn_handler()).get()
+
+      # Call the asynchronous function :
+      asyncio.get_event_loop().run_until_complete(getBlockchainWithTx())
+
+      print("\nblockchainWithTx :")
+      print(blockchainWithTx)
 
 
 \- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
