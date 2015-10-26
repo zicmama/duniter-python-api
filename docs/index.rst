@@ -31,7 +31,7 @@ Client example::
   import aiohttp
   import ucoinpy
 
-  # Get the informations /node/summary from the given node :
+  # Get the information /node/summary from the given node :
   def getSummaryInfo():
       # The given node : [NAME_OF_THE_API] [DOMAIN] [IPV4] [IPV6] PORT]
       myEndpoint = "BASIC_MERKLED_API sbhosting.me 51.254.203.24 fe80::f816:3eff:fe79:c9af 8999"
