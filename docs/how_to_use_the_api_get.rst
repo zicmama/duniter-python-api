@@ -391,7 +391,7 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txsourcespubkey
 
 ``/tx/history/[pubkey]`` :
 
-https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txsourcespubkey
+https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txhistorypubkey
 
 .. code-block:: python
 
