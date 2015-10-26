@@ -1,9 +1,7 @@
 How to use the Python uCoin API to Get specified data
 --------------------------------------------------------
 
-``http://metab.ucoin.io:9201/node/summary``
-
-* ``/node/summary``
+* ``http://metab.ucoin.io:9201/node/summary`` --> ``/node/summary``
 
 * ``/blockchain/parameters``
 
