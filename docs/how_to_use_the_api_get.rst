@@ -575,6 +575,19 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainwithtx
 
 \- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+``/blockchain/branches`` :
+
+https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainbranches
+
+.. code-block:: python
+
+  # ----------- GET current branches of the node. -----------
+
+  # Not yet implemented in the Python API : /blockchain/branches
+
+
+\- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 ``/tx/sources/[pubkey]`` :
 
 https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#txsourcespubkey
