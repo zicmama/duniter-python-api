@@ -27,6 +27,20 @@ How to use the Python uCoin API to Get specified data
 
 * ``/blockchain/hardship/[pubkey]``
 
+* ``/blockchain/with/newcomers``
+
+* ``/blockchain/with/certs``
+
+* ``/blockchain/with/actives``
+
+* ``/blockchain/with/leavers``
+
+* ``/blockchain/with/excluded``
+
+* ``/blockchain/with/ud``
+
+* ``/blockchain/with/tx``
+
 * ``/tx/sources/[pubkey]``
 
 * ``/tx/history/[pubkey]``
@@ -369,6 +383,149 @@ https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainhardship
 
 \- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+``/blockchain/with/newcomers`` :
+
+https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainwithnewcomers
+
+.. code-block:: python
+
+  # --------------- GET the block numbers containing newcomers (new identities). -----------
+  blockchainWithNewcomers = ""
+
+  # Get the informations /blockchain/with/newcomers from the given node :
+  def getBlockchainWithNewcomers():
+    global blockchainWithNewcomers
+    # Here we request for the path /blockchain/ "with/newcomers" through the "Basic Merkled API"
+    blockchainWithNewcomers = yield from Newcomers(Endpoint.from_inline(myEndpoint).conn_handler()).get()
+
+  # Call the asynchronous function :
+  asyncio.get_event_loop().run_until_complete(getBlockchainWithNewcomers())
+
+  print("\nblockchainWithNewcomers :")
+  print(blockchainWithNewcomers)
+
+
+\- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+``/blockchain/with/certs`` :
+
+https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainwithcerts
+
+.. code-block:: python
+
+  # --------------- GET the block numbers containing certifications. -----------
+  blockchainWithCerts = ""
+
+  # Get the informations /blockchain/with/certs from the given node :
+  def getBlockchainWithCerts():
+      global blockchainWithCerts
+      # Here we request for the path /blockchain/ "with/certs" through the "Basic Merkled API"
+      blockchainWithCerts = yield from Certifications(Endpoint.from_inline(myEndpoint).conn_handler()).get()
+
+  # Call the asynchronous function :
+  asyncio.get_event_loop().run_until_complete(getBlockchainWithCerts())
+
+  print("\nblockchainWithCerts :")
+  print(blockchainWithCerts)
+
+
+\- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+``/blockchain/with/joiners`` :
+
+https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainwithjoiners
+
+.. code-block:: python
+
+    # --------------- GET the block numbers containing joiners (newcomers or people coming back after exclusion). -----------
+    blockchainWithJoiners = ""
+
+    # Get the informations /blockchain/with/joiners from the given node :
+    def getBlockchainWithJoiners():
+        global blockchainWithJoiners
+        # Here we request for the path /blockchain/ "with/joiners" through the "Basic Merkled API"
+        blockchainWithJoiners = yield from Joiners(Endpoint.from_inline(myEndpoint).conn_handler()).get()
+
+    # Call the asynchronous function :
+    asyncio.get_event_loop().run_until_complete(getBlockchainWithJoiners())
+
+    print("\nblockchainWithJoiners :")
+    print(blockchainWithJoiners)
+
+
+\- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+``/blockchain/with/actives`` :
+
+https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainwithactives
+
+.. code-block:: python
+
+      # --------------- GET the block numbers containing actives (members updating their membership). -----------
+      blockchainWithActives = ""
+
+      # Get the informations /blockchain/with/actives from the given node :
+      def getBlockchainWithActives():
+          global blockchainWithActives
+          # Here we request for the path /blockchain/ "with/actives" through the "Basic Merkled API"
+          blockchainWithActives = yield from Actives(Endpoint.from_inline(myEndpoint).conn_handler()).get()
+
+      # Call the asynchronous function :
+      asyncio.get_event_loop().run_until_complete(getBlockchainWithActives())
+
+      print("\nblockchainWithActives :")
+      print(blockchainWithActives)
+
+
+\- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+``/blockchain/with/leavers`` :
+
+https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainwithleavers
+
+.. code-block:: python
+
+  # --------------- GET the block numbers containing leavers (members leaving definitely the currency). -----------
+  blockchainWithLeavers = ""
+
+  # Get the informations /blockchain/with/leavers from the given node :
+  def getBlockchainWithLeavers():
+      global blockchainWithLeavers
+      # Here we request for the path /blockchain/ "with/leavers" through the "Basic Merkled API"
+      blockchainWithLeavers = yield from Actives(Endpoint.from_inline(myEndpoint).conn_handler()).get()
+
+      # Call the asynchronous function :
+      asyncio.get_event_loop().run_until_complete(getBlockchainWithLeavers())
+
+      print("\nblockchainWithLeavers :")
+      print(blockchainWithLeavers)
+
+
+\- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+``blockchain/with/excluded`` :
+
+https://github.com/ucoin-io/ucoin/blob/master/doc/HTTP_API.md#blockchainwithexcluded
+
+.. code-block:: python
+
+  # --------------- GET the block numbers containing excluded members. -----------
+  blockchainWithExcluded = ""
+
+  # Get the informations /blockchain/with/excluded from the given node :
+  def getBlockchainWithExcluded():
+      global blockchainWithExcluded
+      # Here we request for the path /blockchain/ "with/excluded" through the "Basic Merkled API"
+      blockchainWithExcluded = yield from Excluded(Endpoint.from_inline(myEndpoint).conn_handler()).get()
+
+      # Call the asynchronous function :
+      asyncio.get_event_loop().run_until_complete(getBlockchainWithExcluded())
+
+      print("\nblockchainWithLeavers :")
+      print(blockchainWithExcluded)
+
+
+\- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ``/tx/sources/[pubkey]`` :
 
