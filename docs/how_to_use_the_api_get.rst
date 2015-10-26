@@ -50,10 +50,7 @@ How to use the Python uCoin API to Get specified data
   import aiohttp, asyncio, ucoinpy
 
   # You can use either a complete defined endpoint ( with IPV4 / IPV6 ) or the simple definition : domain name + port number.
-
   # Given node : [NAME_OF_THE_API] [DOMAIN] [IPv4] [IPv6] PORT]
-  #myEndpoint = "BASIC_MERKLED_API metab.ucoin.io 88.174.120.187 8999"
-  # Given node : [NAME_OF_THE_API] [DOMAIN] [PORT]
   myEndpoint = "BASIC_MERKLED_API metab.ucoin.io 9201"
 
 
