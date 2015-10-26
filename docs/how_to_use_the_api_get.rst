@@ -45,7 +45,7 @@ Not yet implemented in the Python API :
 
 * ``/tx/history/[PUBKEY]/times/[FROM]/[TO]``
 
-
+<br />
 
 **Imports and initializations of variables :**
 
