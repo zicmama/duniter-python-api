@@ -33,7 +33,7 @@ Client example::
 
   # Get the information /node/summary from the given node :
   def getSummaryInfo():
-      # You can use either a complete defined endpoint : [NAME_OF_THE_API] [DOMAIN] [IPv4] [IPv6] [PORT]
+      # You can either use a complete defined endpoint : [NAME_OF_THE_API] [DOMAIN] [IPv4] [IPv6] [PORT]
       # or the simple definition : [NAME_OF_THE_API] [DOMAIN] [PORT]
       myEndpoint = "BASIC_MERKLED_API metab.ucoin.io 9201"
 
