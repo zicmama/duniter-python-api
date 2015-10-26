@@ -47,7 +47,7 @@ Imports and initializations of variables :
 
   import aiohttp, asyncio, ucoinpy
 
-  # You can use either complete format endpoint with IPV4 or with IPV6 ; or either the format : domain name + port.
+  # You can use either a complete defined endpoint ( with IPV4 / IPV6 ) or the simple definition : domain name + port number.
 
   # Given node : [NAME_OF_THE_API] [DOMAIN] [IPv4] [IPv6] PORT]
   #myEndpoint = "BASIC_MERKLED_API sbhosting.me 51.254.203.24 fe80::f816:3eff:fe79:c9af 8999"
